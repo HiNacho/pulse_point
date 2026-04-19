@@ -5,10 +5,12 @@
 Today was all about preparation. To succeed in the next 100 days, we needed a professional environment where data can breathe and code can be tracked. We aren't just practicing SQL; we are building a clinical data infrastructure.
 
 ### 🛠️ Tasks Completed
-1. **Repository Setup:** Initialized the `PulsePoint` project on GitHub with a professional directory structure:
-	- `/data`: Home for our raw clinical records.
-	- `/scripts`: The engine room for SQL builds and Python automation.
-	- `/docs`: The vault for architecture blueprints (ERDs) and Data Dictionaries.
+1. **Repository Setup:** Initialized the `PulsePoint` project on GitHub with a professional directory structure and essential files:
+	- `/data`: Home for our raw clinical records (e.g., `PulsePoint_Master_Data.xlsx`).
+	- `daily_logs.md`: For daily project updates and documentation.
+	- `file_generator.py`: Script to generate synthetic Excel datasets with clinical noise.
+	- `pulse_point.sql`: For all SQL schema, DDL, and query scripts.
+	- `requirement.txt`: Stores all Python dependencies needed for data generation and analysis.
 2. **Toolkit Validation:** Confirmed local installation of the "Big Four":
 	- **MySQL Workbench:** Our primary RDBMS.
 	- **Excel:** For data dictionary mapping.
