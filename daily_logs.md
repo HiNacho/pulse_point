@@ -20,7 +20,7 @@ Today was all about preparation. To succeed in the next 100 days, we needed a pr
 Followers can choose one of two paths to get their "Lab" ready for Day 001:
 
 * **Option A (The Shortcut):** Download the pre-generated `PulsePoint_Master_Dataset.xlsx` directly from the [`/data`](./data) folder.
-* **Option B (The Architect Path):** Run the [`file_generator.py`](./scripts/file_generator.py) script locally to understand how synthetic clinical noise is created. 
+* **Option B (The Architect Path):** Run the [`file_generator.py`](file_generator.py) script locally to understand how synthetic clinical noise is created. 
 	 *Note: You will need to run `pip install pandas openpyxl numpy` before executing.*
 
 ### 💡 Pro-Tip for Today
