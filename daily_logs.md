@@ -39,7 +39,7 @@ The requirements.txt file is already included in the repo with all necessary dep
 ---
 
 
-# 🏥 Day 001: Relationship Mapping & ERD Architecture
+# 🏥 Day 001: Relationship Mapping
 **Date:** April 20, 2026
 **Status:** COMPLETE ✅
 
