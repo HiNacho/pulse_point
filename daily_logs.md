@@ -157,3 +157,27 @@ Every piece of data is perfectly "glued" together by the IDs we mapped out today
 This ERD is now the solid foundation for everything that follows. 
 
 **Next Step:** Tomorrow (**Day 003**), I will convert this visual blueprint into real SQL code using `CREATE TABLE` statements, defining the data types and constraints for all 7 tables. 🚀
+
+# 🏥 Day 003: Hand-Coding the PulsePoint Schema
+**Date:** April 22, 2026
+**Status:** COMPLETE ✅
+
+# Day 003: Building the PulsePoint Schema Manually
+
+**Date:** April 22, 2026  
+**Status:** ✅ Complete
+
+**Learned Today:**
+- Different types of SQL constraints and when to use them
+- DDL commands: CREATE DATABASE, USE, CREATE TABLE
+- Why we start with relaxed (VARCHAR-heavy) tables for messy real-world data
+
+**What I Built:**
+- Created `pulsepoint` database
+- Wrote and executed `CREATE TABLE` scripts for all 7 tables
+- Added basic PRIMARY KEY constraints
+
+**Key Takeaway:**  
+Build the foundation manually first. Understand the "grammar" of SQL before using shortcuts.
+
+**Tomorrow (Day 4):** Importing data + cleaning + adding FOREIGN KEY constraints.
