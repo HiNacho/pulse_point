@@ -162,10 +162,6 @@ This ERD is now the solid foundation for everything that follows.
 **Date:** April 22, 2026
 **Status:** COMPLETE ✅
 
-# Day 003: Building the PulsePoint Schema Manually
-
-**Date:** April 22, 2026  
-**Status:** ✅ Complete
 
 **Learned Today:**
 - Different types of SQL constraints and when to use them
@@ -181,3 +177,70 @@ This ERD is now the solid foundation for everything that follows.
 Build the foundation manually first. Understand the "grammar" of SQL before using shortcuts.
 
 **Tomorrow (Day 4):** Importing data + cleaning + adding FOREIGN KEY constraints.
+
+# 🏥 Day 004: From Excel → SQL (Building + Moving Real Data)
+**Status:** COMPLETE ✅
+
+Day 004 of my SQL 100 Days Challenge… and today felt like real data engineering.
+Not the “just write a query” type…
+I mean the kind where things break, and you have to figure it out step by step.
+
+## 🔹 What I Did
+1. **Built My First Table**
+   - My first table: `clinical_departments`
+   - 👉 That’s the name of the table I created to store department data.
+
+## 🔹 Challenges I Ran Into (and how I solved them)
+This wasn’t a smooth process… here’s what actually happened 👇
+
+### 🛑 Problem 1: Excel file refused to import
+- The file just wouldn’t upload into MySQL
+- 💡 **What I realized:** I saved the file in UTF format
+- 💡 **Fix:** I saved it as a normal .csv file instead
+- 👉 That simple change fixed the issue
+
+### 🛑 Problem 2: Couldn’t clear (truncate) my table
+- I tried to truncate the table, but it didn’t work
+- **Reason:** I had already connected another table using a foreign key
+- 💡 **Fix:** I temporarily disabled foreign key checks:
+  ```sql
+  SET FOREIGN_KEY_CHECKS = 0;
+  ```
+
+### 🛑 Problem 3: Import successful… but table was empty 😅
+- The import ran without errors
+- But no records were added
+- 💡 **Root cause:** Some cells in Excel were empty
+- 💡 **Fix:** I changed some columns to `VARCHAR`
+- 👉 This is called a staging approach
+  - → Load messy data first
+  - → Clean it later
+
+## 🔹 Results 🎉
+- My tables were successfully populated
+- Data finally showed up correctly
+- ```sql
+  SELECT * FROM clinical_departments;
+  ```
+- ✅ Everything checked out
+
+## 📚 What I Learned Today
+- Data is not just data → format matters (encoding can break everything)
+- You must load parent tables before child tables
+- Real projects are messy → cleaning comes after importing
+- Being less strict early (using VARCHAR) can actually help
+
+## 🚀 What’s Next (Day 005)
+Now that the data is inside:
+- Clean and convert columns (`VARCHAR` → `INT`, `DECIMAL`)
+- Add automation using SQL triggers
+- Import larger datasets (patients & encounters)
+
+## 💭 Final Thought
+Today wasn’t smooth… but that’s the point.
+This is what real learning looks like:
+- 👉 Things break
+- 👉 You investigate
+- 👉 You fix
+- 👉 You understand deeper
+

@@ -1,0 +1,6 @@
+dept_id,dept_name,parent_dept_id,budget
+1,Internal Medicine,,500000
+2,Surgery,,850000
+3,Cardiology,1,250000
+4,Orthopedics,2,300000
+5,Pediatrics,1,200000
