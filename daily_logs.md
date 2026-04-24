@@ -1,3 +1,5 @@
+
+#100DaysOfSQL #DataEngineering #MySQL #Automation #PulsePoint #HiNacho
 # 🏥 Day 000: Setting Up The PulsePoint Lab
 **Date:** April 19, 2026
 **Status:** COMPLETE ✅
@@ -243,4 +245,79 @@ This is what real learning looks like:
 - 👉 You investigate
 - 👉 You fix
 - 👉 You understand deeper
+
+
+---
+
+# Update: Day 005 - Advanced Data Governance & Automated Triggers
+Date: April 24, 2026
+
+Status: COMPLETE ✅
+
+Today shifted from simply moving data to protecting its integrity. I moved beyond basic table creation and implemented "Digital Gatekeepers" to ensure the PulsePoint database remains clean, regardless of how messy the input data is.
+
+🎯 Objective
+To automate the standardization of inconsistent fields (Gender, DOB) and handle missing values without manual intervention.
+
+🧠 Strategic Implementation: The "Bouncer" Strategy
+I implemented two high-level SQL triggers to act as a validation layer during the INSERT process.
+
+1. The Date Decoder (Multi-Format Support)
+The raw dataset contained dates in multiple international formats (US Slashes, Euro Dashes, Alpha-Dash).
+
+The Solution: A trigger using COALESCE and STR_TO_DATE that attempts 4 different "masks" to decode the string.
+
+The Result: Every patient DOB is now successfully converted to a standardized SQL DATE format during entry.
+
+2. The Gender & "NA" Guard
+To solve the chaos of inconsistent gender labels (M, m, fem, etc.) and empty cells.
+
+The Solution: Pattern matching using LIKE 'M%' and LIKE 'F%'.
+
+Missing Data: Implemented a catch-all that replaces NULL or empty strings with 'NA'.
+
+🛠️ The Technical Script
+SQL
+DELIMITER //
+
+-- Trigger to handle Date of Birth Standardization
+CREATE TRIGGER before_patient_insert_advanced
+BEFORE INSERT ON patients
+FOR EACH ROW
+BEGIN
+  SET NEW.dob = COALESCE(
+    STR_TO_DATE(NEW.dob, '%Y-%m-%d'), -- Standard (1976-04-17)
+    STR_TO_DATE(NEW.dob, '%d-%M-%y'), -- Alpha-Dash (17-April-76)
+    STR_TO_DATE(NEW.dob, '%m/%d/%Y'), -- US Slashes (04/17/1976)
+    STR_TO_DATE(NEW.dob, '%d-%m-%Y'), -- Euro Dashes (17-04-1976)
+    NEW.dob                           -- Fallback to original
+  );
+END //
+
+-- Trigger to handle Gender Standardization and Missing Values
+CREATE TRIGGER trg_standardize_gender
+BEFORE INSERT ON patients
+FOR EACH ROW
+BEGIN
+  IF NEW.gender IS NULL OR NEW.gender = '' THEN
+    SET NEW.gender = 'NA';
+  ELSEIF NEW.gender LIKE 'm%' OR NEW.gender LIKE 'M%' THEN
+    SET NEW.gender = 'Male';
+  ELSEIF NEW.gender LIKE 'f%' OR NEW.gender LIKE 'F%' THEN
+    SET NEW.gender = 'Female';
+  ELSE
+    SET NEW.gender = 'NA';
+  END IF;
+END //
+
+DELIMITER ;
+📚 Key Lessons
+Defensive Schema Design: It is significantly more efficient to "wash" data at the door (Trigger) than to clean it inside the table later.
+
+The Power of COALESCE: This function is a lifesaver for handling multiple possible data formats in a single pass.
+
+Clinical Standards: In a healthcare database, a NULL is a mystery. An 'NA' is a confirmed lack of data. I’ve shifted my architecture to prioritize the latter for better reporting.
+
+🚀 What’s Next (Day 006)
+With the automation in place, I will begin Cross-Table Verification. We will start writing queries to ensure that every Provider is correctly mapped to their Department and every Encounter is logically sound.
 

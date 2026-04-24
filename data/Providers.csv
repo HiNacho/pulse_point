@@ -1,0 +1,21 @@
+provider_id,first_name,last_name,specialty,dept_id
+501,James,Morales,Cardiologist,2
+502,Jeff,Martinez,Nurse Practitioner,2
+503,Paul,Wood,Surgeon,3
+504,Jim,Clay,Nurse Practitioner,2
+505,Timothy,Cox,GP,3
+506,Denise,Lewis,Surgeon,1
+507,Marie,Jensen,GP,5
+508,Michael,Campbell,Nurse Practitioner,5
+509,James,Miller,Cardiologist,2
+510,Brandon,Smith,Cardiologist,5
+511,Marissa,Paul,Cardiologist,4
+512,Willie,Bailey,Cardiologist,3
+513,Leslie,Crane,Surgeon,2
+514,Katherine,Thompson,Cardiologist,4
+515,John,Young,Surgeon,3
+516,Rebecca,Kim,Cardiologist,2
+517,Holly,Fields,Cardiologist,5
+518,Jason,Conway,GP,1
+519,Yolanda,Marshall,GP,5
+520,Joyce,Turner,Surgeon,3
